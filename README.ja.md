@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="README.md">简体中文</a> · <a href="README.en.md">English</a> · <strong>日本語</strong>
+  <a href="README.md">简体中文</a> · <a href="README.en.md">English</a> · <strong>日本語</strong> · <a href="README.mars.md">吙煋呅</a>
 </p>
 
 <h1 align="center">PDF 自動翻訳・アーカイブ</h1>
@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/Larryppg/pdf-translation-workflow/actions/workflows/tests.yml"><img alt="Tests" src="https://github.com/Larryppg/pdf-translation-workflow/actions/workflows/tests.yml/badge.svg"></a>
+  <a href="https://github.com/Larryppg/auto_pdf_translator/actions/workflows/tests.yml"><img alt="Tests" src="https://github.com/Larryppg/auto_pdf_translator/actions/workflows/tests.yml/badge.svg"></a>
   <img alt="Software free" src="https://img.shields.io/badge/software-100%25%20free-brightgreen">
   <img alt="Non-commercial project" src="https://img.shields.io/badge/project-non--commercial-blue">
   <img alt="Current API" src="https://img.shields.io/badge/current%20API-DeepSeek-6f42c1">
@@ -78,8 +78,8 @@ OCR はローカルで実行されます。API へ送信するのは抽出され
 ## クイックスタート
 
 ```powershell
-git clone https://github.com/Larryppg/pdf-translation-workflow.git
-cd pdf-translation-workflow
+git clone https://github.com/Larryppg/auto_pdf_translator.git
+cd auto_pdf_translator
 Set-ExecutionPolicy -Scope Process Bypass
 .\scripts\setup.ps1
 ```
