@@ -26,6 +26,22 @@
 > The configuration can point to another OpenAI-compatible endpoint, but other providers have not yet
 > been individually validated as officially supported backends.
 
+## Screenshots
+
+<p align="center">
+  <a href="docs/images/gui-main.png"><img src="docs/images/gui-main.png" alt="GUI main screen and AI settings" width="49%"></a>
+  <a href="docs/images/gui-completed.png"><img src="docs/images/gui-completed.png" alt="GUI completed translation state" width="49%"></a>
+</p>
+<p align="center"><sub>The real Windows GUI: file selection, thinking and pre-analysis switches, progress, and the completed job result. Click an image for the full-size view.</sub></p>
+
+### Image-text translation and layout preservation
+
+<p align="center">
+  <a href="docs/images/demo-source.png"><img src="docs/images/demo-source.png" alt="Synthetic source PDF before translation" width="49%"></a>
+  <a href="docs/images/demo-translated.png"><img src="docs/images/demo-translated.png" alt="Synthetic PDF after translation" width="49%"></a>
+</p>
+<p align="center"><sub>Left: English source; right: Simplified Chinese output. This synthetic, privacy-safe page was processed by the application and contains both native PDF text and text embedded in an image.</sub></p>
+
 ## Key advantages
 
 - **Translate text inside images** — local OCR detects text in figures, screenshots, and scanned regions before translation.

@@ -26,6 +26,22 @@
 > 実動作を確認しています。** 他の OpenAI 互換エンドポイントも設定できますが、現時点では
 > 正式サポート対象として個別検証していません。
 
+## スクリーンショット
+
+<p align="center">
+  <a href="docs/images/gui-main.png"><img src="docs/images/gui-main.png" alt="GUI メイン画面と AI 設定" width="49%"></a>
+  <a href="docs/images/gui-completed.png"><img src="docs/images/gui-completed.png" alt="GUI の翻訳完了画面" width="49%"></a>
+</p>
+<p align="center"><sub>実際の Windows GUI。ファイル選択、思考モードと事前解析の切り替え、進行状況、完了結果を確認できます。画像をクリックすると原寸で表示します。</sub></p>
+
+### 画像内文字の翻訳とレイアウト保持
+
+<p align="center">
+  <a href="docs/images/demo-source.png"><img src="docs/images/demo-source.png" alt="翻訳前の合成デモ PDF" width="49%"></a>
+  <a href="docs/images/demo-translated.png"><img src="docs/images/demo-translated.png" alt="翻訳後の合成デモ PDF" width="49%"></a>
+</p>
+<p align="center"><sub>左：英語原文、右：簡体字中国語の翻訳結果。アプリで実際に処理した、個人情報を含まない合成ページで、PDF ネイティブ文字と画像内文字の両方を含みます。</sub></p>
+
 ## 主な利点
 
 - **画像内の文字も翻訳**：図、スクリーンショット、スキャン領域をローカル OCR で認識してから翻訳します。

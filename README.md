@@ -24,6 +24,22 @@
 > **当前版本暂时以 DeepSeek OpenAI 兼容 API 为默认并完成实际验证。** 代码保留了通用
 > OpenAI-compatible 接口配置能力，但其他服务商尚未作为正式支持后端逐一测试。
 
+## 应用截图
+
+<p align="center">
+  <a href="docs/images/gui-main.png"><img src="docs/images/gui-main.png" alt="GUI 主界面与 AI 设置" width="49%"></a>
+  <a href="docs/images/gui-completed.png"><img src="docs/images/gui-completed.png" alt="GUI 翻译完成状态" width="49%"></a>
+</p>
+<p align="center"><sub>真实 Windows GUI：文件选择、思考模式与预检测开关，以及完成后的进度和任务结果。点击图片可查看原图。</sub></p>
+
+### 图片文字与原位排版效果
+
+<p align="center">
+  <a href="docs/images/demo-source.png"><img src="docs/images/demo-source.png" alt="翻译前的合成演示 PDF" width="49%"></a>
+  <a href="docs/images/demo-translated.png"><img src="docs/images/demo-translated.png" alt="翻译后的合成演示 PDF" width="49%"></a>
+</p>
+<p align="center"><sub>左：英文原文件；右：简体中文译文。示例由程序实际处理，包含原生 PDF 文字和图片内文字，不含私人数据。</sub></p>
+
 ## 为什么选择它
 
 - **翻译图片中的文字**：本地 OCR 识别 PDF 插图、扫描区域和截图中的文字，再交给翻译模型。
