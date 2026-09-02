@@ -1,6 +1,42 @@
-# PDF 自动翻译与归档工作流
+<p align="center">
+  <strong>简体中文</strong> · <a href="README.en.md">English</a> · <a href="README.ja.md">日本語</a>
+</p>
 
-这是一个独立实现的 Windows/Python 工作流：把 PDF 放入 `source/` 后，程序等待文件复制完成，翻译 PDF 原生文字和图片内文字，原位排版生成新 PDF，验证成功后再把原件按日期归档。
+<h1 align="center">PDF 自动翻译与归档</h1>
+
+<p align="center">
+  免费、非商业化的 PDF 翻译软件，支持图片文字 OCR、原位排版和文档级翻译辅助。
+</p>
+
+<p align="center">
+  <a href="https://github.com/Larryppg/pdf-translation-workflow/actions/workflows/tests.yml"><img alt="Tests" src="https://github.com/Larryppg/pdf-translation-workflow/actions/workflows/tests.yml/badge.svg"></a>
+  <img alt="Software free" src="https://img.shields.io/badge/software-100%25%20free-brightgreen">
+  <img alt="Non-commercial project" src="https://img.shields.io/badge/project-non--commercial-blue">
+  <img alt="Current API" src="https://img.shields.io/badge/current%20API-DeepSeek-6f42c1">
+</p>
+
+> [!IMPORTANT]
+> **软件本体完全免费，并以非商业化方式开发和维护。** 不收许可证费、订阅费或功能费。
+> 安装完成后，只需在本机 `.env` 中加入你自己的 DeepSeek API Key 即可使用。
+> DeepSeek 是第三方 API，其账户、额度和可能产生的调用费用不包含在“软件免费”范围内。
+
+> [!NOTE]
+> **当前版本暂时以 DeepSeek OpenAI 兼容 API 为默认并完成实际验证。** 代码保留了通用
+> OpenAI-compatible 接口配置能力，但其他服务商尚未作为正式支持后端逐一测试。
+
+## 为什么选择它
+
+- **翻译图片中的文字**：本地 OCR 识别 PDF 插图、扫描区域和截图中的文字，再交给翻译模型。
+- **尽量保留原文字位置与格式**：使用原文本框、对齐方式、颜色、背景采样和自适应字号进行原位回填，而不是输出纯文本译稿。
+- **翻译前预检测文档语境**：自动识别主题、领域、关键词、专名、缩写和依赖语境的多义词，并把建议译法注入后续批次。
+- **思考模式可开关**：可以为每次 GUI 入队任务独立选择是否使用 DeepSeek 思考模式。
+- **预检测可开关**：可以为每次任务独立决定是否执行文档预分析；简单文档可直接翻译以节省时间。
+- **自动监听与归档**：新 PDF 加入 `source/` 后自动触发，验证输出后再归档工作副本。
+- **可追踪、可恢复**：提供批次进度、ETA、重试、完整性检查、manifest、失败记录和内容哈希去重。
+
+这是一个独立实现的 Windows/Python 工作流：可以通过 GUI 选择 PDF，也可以把 PDF 放入
+`source/`。程序会等待文件复制完成，翻译 PDF 原生文字和图片内文字，原位排版生成新 PDF，
+验证成功后再把工作副本按日期归档。
 
 ## 工作流
 
