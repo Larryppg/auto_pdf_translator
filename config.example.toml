@@ -1,0 +1,57 @@
+[paths]
+source = "source"
+translated = "translated"
+archive = "archive"
+failed = "failed"
+state = ".state"
+
+[translation]
+source_language = "auto"
+target_language = "Simplified Chinese"
+backend = "openai_compatible"
+model = "deepseek-v4-flash"
+base_url = "https://api.deepseek.com"
+api_key_env = "OPENAI_API_KEY"
+thinking_mode = "disabled"
+temperature = 0.1
+request_timeout_seconds = 120
+max_request_characters = 12000
+retry_attempts = 4
+glossary = {}
+
+[document_analysis]
+enabled = true
+required = false
+sample_characters = 18000
+max_keywords = 24
+max_terms = 48
+
+[ocr]
+enabled = true
+languages = ["en", "ch_sim"]
+minimum_confidence = 0.58
+render_dpi = 220
+minimum_image_width = 80
+minimum_image_height = 40
+
+[layout]
+minimum_font_size = 5.5
+maximum_font_size = 24.0
+box_padding = 1.2
+redaction_padding = 0.6
+line_height = 1.12
+font_file = ""
+fallback_cjk_font = "china-s"
+background_sampling = true
+
+[watch]
+stable_seconds = 3.0
+poll_seconds = 1.0
+worker_count = 1
+startup_scan = true
+recursive = false
+
+[archive]
+date_folders = true
+keep_original_filename = true
+write_manifest = true
