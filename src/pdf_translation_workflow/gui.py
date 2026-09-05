@@ -9,6 +9,7 @@ import subprocess
 import sys
 import threading
 import time
+import traceback
 import uuid
 from dataclasses import dataclass
 from pathlib import Path
@@ -574,21 +575,56 @@ def _parser() -> argparse.ArgumentParser:
     return parser
 
 
+def _report_startup_error(error: BaseException, parent: tk.Misc | None = None) -> None:
+    log_path: Path | None = Path.cwd() / ".state" / "gui-startup.log"
+    try:
+        log_path.parent.mkdir(parents=True, exist_ok=True)
+        with log_path.open("a", encoding="utf-8") as handle:
+            handle.write("\n=== GUI startup failure ===\n")
+            handle.write("".join(traceback.format_exception(error)))
+    except OSError:
+        log_path = None
+
+    detail = f"{type(error).__name__}: {error}"
+    if log_path is not None:
+        detail += f"\n\nDetails were saved to:\n{log_path}"
+    else:
+        detail += "\n\nThe startup log could not be written."
+
+    dialog_root: tk.Tk | tk.Misc | None = parent
+    owns_root = dialog_root is None
+    try:
+        if dialog_root is None:
+            dialog_root = tk.Tk()
+            dialog_root.withdraw()
+        messagebox.showerror("PDF Translator startup failed", detail, parent=dialog_root)
+    except Exception:
+        pass
+    finally:
+        if owns_root and dialog_root is not None:
+            try:
+                dialog_root.destroy()
+            except Exception:
+                pass
+
+
 def main(argv: list[str] | None = None) -> None:
     args = _parser().parse_args(argv)
     config_path = args.config.expanduser().resolve()
+    root: tk.Tk | None = None
     try:
         config = load_config(config_path)
         config.ensure_directories()
-    except Exception as exc:
         root = tk.Tk()
-        root.withdraw()
-        messagebox.showerror("PDF 翻译器启动失败", str(exc), parent=root)
-        root.destroy()
-        return
-    root = tk.Tk()
-    PdfTranslatorGui(root, config, config_path)
-    root.mainloop()
+        PdfTranslatorGui(root, config, config_path)
+        root.mainloop()
+    except Exception as exc:
+        _report_startup_error(exc, parent=root)
+        if root is not None:
+            try:
+                root.destroy()
+            except Exception:
+                pass
 
 
 if __name__ == "__main__":

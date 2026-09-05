@@ -1,19 +1,28 @@
 @echo off
 setlocal
-chcp 65001 >nul
 cd /d "%~dp0"
-title PDF 翻译器 GUI 启动入口
+title PDF Translator GUI Launcher
 
 set "PDF_GUI_PYTHON=%~dp0.venv\Scripts\pythonw.exe"
+set "PDF_GUI_CONFIG=%~dp0config.toml"
+
 if not exist "%PDF_GUI_PYTHON%" (
-    echo [错误] 尚未完成环境安装，请先运行 scripts\setup.ps1。
+    echo [ERROR] Python environment not found.
+    echo Run scripts\setup.ps1 first, then try again.
     pause
     exit /b 1
 )
 
-start "" /D "%~dp0" "%PDF_GUI_PYTHON%" -m pdf_translation_workflow.gui --config "%~dp0config.toml"
+if not exist "%PDF_GUI_CONFIG%" (
+    echo [ERROR] config.toml not found next to this launcher.
+    pause
+    exit /b 1
+)
+
+start "" /D "%~dp0" "%PDF_GUI_PYTHON%" -m pdf_translation_workflow.gui --config "%PDF_GUI_CONFIG%"
 if errorlevel 1 (
-    echo [错误] GUI 启动失败。
+    echo [ERROR] Windows could not launch the PDF Translator GUI.
+    echo Check .state\gui-startup.log for details.
     pause
     exit /b 1
 )
